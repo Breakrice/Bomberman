@@ -24,8 +24,32 @@ public class KeyBox extends Canvas implements KeyListener
 
 	public void paint( Graphics window )
 	{
-		window.setColor(Color.WHITE);
-		window.fillRect(0,0,800,600);
+		Graphics2D g2 = (Graphics2D) window;
+		Image background = Toolkit.getDefaultToolkit().getImage("background.png");
+		g2.drawImage(background, 0 , 0 , 1950 , 950 , this);
+
+		for(int i=0;i<1950;i+=50) {
+			Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
+			g2.drawImage(block, i, 0, 50, 50, this);
+		}
+		for(int i=0;i<950;i+=50) {
+			Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
+			g2.drawImage(block, 0, i, 50, 50, this);
+		}
+		for(int i=50;i<1950;i+=50) {
+			Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
+			g2.drawImage(block, i, 900, 50, 50, this);
+		}
+		for(int i=50;i<900;i+=50) {
+			Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
+			g2.drawImage(block, 1900, i, 50, 50, this);
+		}
+		for(int i=100;i<1950;i+=100) {
+			for(int j=100;j<950;j+=100) {
+				Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
+				g2.drawImage(block, i, j, 50, 50, this);
+			}
+		}
 		
 		window.setColor(Color.red);		
 		window.drawString( "Please type something!", 250, 100 );
