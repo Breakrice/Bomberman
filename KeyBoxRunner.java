@@ -7,7 +7,7 @@ public class KeyBoxRunner extends JFrame
 
     public KeyBoxRunner()
     {
-        super("Key Listener!!");
+        super("Bomberman");
 
         setSize(WIDTH,HEIGHT);
 
