@@ -53,11 +53,18 @@ public class KeyBox extends Canvas implements KeyListener
 			g2.drawImage(block, 30*spriteSize, i*spriteSize, 50, 50, this);
 			map[i][30]="block";
 		}
-        for(int i=100;i<1550;i+=100)
-            for(int j=100;j<650;j+=100)
-                g2.drawImage(block, i, j, 50, 50, this);
-        for(int i=50;i<1500;i+=50)
-            g2.drawImage(brick, i, 50, 50, 50, this);
+        
+		for(int r=2;r<map.length;r++)
+			for(int c=2;c<map[0].length;c++) {
+				if(r%2==0&&c%2==0) {
+					g2.drawImage(block, c * spriteSize, r * spriteSize, 50, 50, this);
+					map[r][c] = "block";
+				}
+			}
+		for(int i=1;i<30;i++) {
+			g2.drawImage(brick, i * spriteSize, 1*spriteSize, 50, 50, this);
+			map[1][i]="brick";
+		}
 
         g2.drawImage(man, 160, 155, 50, 50, this);
 
