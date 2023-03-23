@@ -5,22 +5,22 @@ import java.awt.event.KeyListener; /*must be imported in the KeyListener*/
 // this is only to test if the keys are pressed.
 public class KeyBox extends Canvas implements KeyListener
 {
-    private String keys_typed;
-    private String key;
+	private String keys_typed;
+	private String key;
+	private int spriteSize=50;
 
 
-    //this is the constructor
-    public KeyBox( )
-    {
-        key = "NO KEY PRESSED YET";
+	//this is the constructor
+	public KeyBox( )
+	{
+		key = "NO KEY PRESSED YET";
 
-        keys_typed = "";
+		keys_typed = "";
 
-        addKeyListener( this ); /*all keyListeners must have this in the constructor*/
+		addKeyListener( this ); /*all keyListeners must have this in the constructor*/
 
-        setFocusable( true );
-    }
-
+		setFocusable( true );
+	}
 
     public void paint( Graphics window )
     {
