@@ -22,6 +22,7 @@ public class KeyBox extends Canvas implements KeyListener
 		setFocusable( true );
 	}
 
+
     public void paint( Graphics window )
 	{
 		Graphics2D g2 = (Graphics2D) window;
@@ -65,7 +66,11 @@ public class KeyBox extends Canvas implements KeyListener
 			g2.drawImage(brick, i * spriteSize, 1*spriteSize, 50, 50, this);
 			map[1][i]="brick";
 		}
-
+		for(int r=0;r<map.length;r++) {
+			for (int c = 0; c < map[0].length; c++)
+				System.out.print(map[r][c]);
+			System.out.println();
+		}
         g2.drawImage(man, 160, 155, 50, 50, this);
 
         window.setColor(Color.red);
