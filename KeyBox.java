@@ -5,12 +5,13 @@ import java.awt.event.KeyListener; /*must be imported in the KeyListener*/
 // this is only to test if the keys are pressed.
 public class KeyBox extends Canvas implements KeyListener
 {
-	private String keys_typed;
-	private String key;
-	private int spriteSize=50;
+    private String keys_typed;
+    private String key;
+    public static TheGuy guy;
+    private int spriteSize=50;
 
 
-	//this is the constructor
+    //this is the constructor
 	public KeyBox( )
 	{
 		key = "NO KEY PRESSED YET";
@@ -81,70 +82,84 @@ public class KeyBox extends Canvas implements KeyListener
 					g2.draw(collision);
 			}
 		}
+    
+        g2.drawImage(man, guy.getX(), guy.getY(), 50, 50, this);
 
-		g2.drawImage(man, 160, 155, 50, 50, this);
 
-		window.setColor(Color.red);
-		window.drawString( "Please type something!", 250, 100 );
 
-		if(keys_typed.length()!=0)
-		{
-			window.setColor(Color.black);
-			window.fillRect(90, 130, keys_typed.length()*7 + 20, 30);
-		}
 
-		window.setColor(Color.green);
-		window.drawString( keys_typed, 100, 150 );
+        window.setColor(Color.red);
+        window.drawString( "Please type something!", 250, 100 );
 
-		window.setColor(new Color( 100, 0, 100 ));
-		window.drawString( key, 250, 200 );
+        if(keys_typed.length()!=0)
+        {
+            window.setColor(Color.black);
+            window.fillRect(90, 130, keys_typed.length()*7 + 20, 30);
+        }
 
-	}
+        window.setColor(Color.green);
+        window.drawString( keys_typed, 100, 150 );
 
-	/*KeyListeners must have these 3 methods:
-	 * You do not have to have code in any of these, they can be empty.
-	 * But they all must be in your KeyListener for it to work.
-	 */
+        window.setColor(new Color( 100, 0, 100 ));
+        window.drawString( key, 250, 200 );
 
-	/*1 */
-	public void keyTyped(KeyEvent e)
-	{
-		keys_typed += "" + e.getKeyChar();
-		repaint();
-	}
+    }
 
-	/*2*/
-	public void keyPressed(KeyEvent e)
-	{
-		/*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT ) {
-			key = ">>>>>>";
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_LEFT ) {
-			key = "<<<<<<";
-		}
-		//add another else if to check if another key was pressed..
-		else {
-			key = "Key " + e.getKeyCode() + " is pressed!";
-		}
-		repaint();
-	}
+    /*KeyListeners must have these 3 methods:
+     * You do not have to have code in any of these, they can be empty.
+     * But they all must be in your KeyListener for it to work.
+     */
 
-	/*3*/
-	public void keyReleased(KeyEvent e)
-	{
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT ) {
-			key = "The right arrow key was released!";
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_LEFT ) {
-			key = "The left arrow key was released!";
-		}
-		//add another else if to check if another key was released..
-		else{
-			key = "Key "+ e.getKeyCode() +" was released!";
-		}
-		repaint();
+    /*1 */
+    public void keyTyped(KeyEvent e)
+    {
+        keys_typed += "" + e.getKeyChar();
+        repaint();
+    }
 
-	}
+    /*2*/
+    public void keyPressed(KeyEvent e)
+    {
+        /*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+            Main.moveR=true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT ) {
+            Main.moveL=true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP ) {
+            Main.moveU=true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN ) {
+            Main.moveD=true;
+        }
+        //add another else if to check if another key was pressed..
+        else {
+            key = "Key " + e.getKeyCode() + " is pressed!";
+        }
+        repaint();
+    }
 
+    /*3*/
+    public void keyReleased(KeyEvent e)
+    {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+           Main.moveR=false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT ) {
+            Main.moveL=false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP ) {
+            Main.moveU=false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN ) {
+            Main.moveD=false;
+        }
+        //add another else if to check if another key was released..
+        else{
+            key = "Key "+ e.getKeyCode() +" was released!";
+        }
+        repaint();
+
+    }
 }
