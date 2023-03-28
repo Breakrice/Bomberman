@@ -86,6 +86,7 @@ public class KeyBox extends Canvas implements KeyListener
 				System.out.print("("+c+", "+r+") "+map[r][c]+" ");
 			System.out.println();
 		}
+		}
     
 	/*1 */
 	public void keyTyped(KeyEvent e)
