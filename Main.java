@@ -10,6 +10,7 @@ public class Main {
         int let=0;
         KeyBox.guy=new TheGuy(160,155);
         new KeyBoxRunner();
+        KeyBox.map=new String[13][31];
         boolean gameStarted=true;
         while(gameStarted==true){
             System.out.print("");
@@ -18,7 +19,7 @@ public class Main {
                 while(moveR==true){
                     let++;
                     let--;
-                    System.out.println("");
+                    System.out.print("");
                 }
             }
             if(moveL==true){
@@ -26,7 +27,7 @@ public class Main {
                 while(moveL==true){
                     let++;
                     let--;
-                    System.out.println("");
+                    System.out.print("");
                 }
             }
             if(moveU==true){
@@ -34,7 +35,7 @@ public class Main {
                 while(moveU==true){
                     let++;
                     let--;
-                    System.out.println("");
+                    System.out.print("");
                 }
             }
             if(moveD==true){
@@ -42,7 +43,7 @@ public class Main {
                 while(moveD==true){
                     let++;
                     let--;
-                    System.out.println("");
+                    System.out.print("");
                 }
             }
         }

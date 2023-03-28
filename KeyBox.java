@@ -9,6 +9,7 @@ public class KeyBox extends Canvas implements KeyListener
     private String key;
     public static TheGuy guy;
     private int spriteSize=50;
+    public static String[][] map;
 
 
     //this is the constructor
@@ -33,8 +34,6 @@ public class KeyBox extends Canvas implements KeyListener
         Image man = Toolkit.getDefaultToolkit().getImage("man_left_step.png");
         Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
         Image brick = Toolkit.getDefaultToolkit().getImage("brick.jpg");
-
-        String[][] map=new String[13][31];
         for(int r=0;r<map.length;r++)
             for(int c=0;c<map[0].length;c++)
                 map[r][c]="empty";
@@ -67,9 +66,11 @@ public class KeyBox extends Canvas implements KeyListener
             g2.drawImage(brick, i * spriteSize, 1*spriteSize, 50, 50, this);
             map[1][i]="brick";
         }
+        map[TheGuy.yBIGpos][TheGuy.xBIGpos]="guy";
+
         for(int r=0;r<map.length;r++) {
             for (int c = 0; c < map[0].length; c++)
-                System.out.print(map[r][c]);
+                System.out.print(""+c+r+map[r][c]+" ");
             System.out.println();
         }
 
@@ -87,7 +88,7 @@ public class KeyBox extends Canvas implements KeyListener
 
 
 
-
+        /*
         window.setColor(Color.red);
         window.drawString( "Please type something!", 250, 100 );
 
@@ -102,6 +103,7 @@ public class KeyBox extends Canvas implements KeyListener
 
         window.setColor(new Color( 100, 0, 100 ));
         window.drawString( key, 250, 200 );
+         */
 
     }
 
@@ -123,16 +125,20 @@ public class KeyBox extends Canvas implements KeyListener
         /*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
         //Check map to see where no move
         if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
-            Main.moveR=true;
+            if(map[TheGuy.yBIGpos][TheGuy.xBIGpos+1].equals("empty"))
+                Main.moveR=true;
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
-            Main.moveL=true;
+            if(map[TheGuy.yBIGpos][TheGuy.xBIGpos-1].equals("empty"))
+                Main.moveL=true;
         }
         else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
-            Main.moveU=true;
+            if(KeyBox.map[TheGuy.yBIGpos-1][TheGuy.xBIGpos].equals("empty"))
+                Main.moveU=true;
         }
         else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
-            Main.moveD=true;
+            if(map[TheGuy.yBIGpos+1][TheGuy.xBIGpos].equals("empty"))
+                Main.moveD=true;
         }
         //add another else if to check if another key was pressed..
         else {
