@@ -8,7 +8,6 @@ public class KeyBox extends Canvas implements KeyListener
 	private String keys_typed;
 	private String key;
 	public static TheGuy guy;
-
 	private int spriteSize=50;
 	public static boolean placebomb=false;
 	public static String[][] map;
@@ -72,62 +71,22 @@ public class KeyBox extends Canvas implements KeyListener
 			map[1][i]="brick";
 		}
 
-		for(int r=0;r<map.length;r++) {
-			for (int c = 0; c < map[0].length; c++)
-				System.out.print("("+c+", "+r+") "+map[r][c]+" ");
-			System.out.println();
-		}
-
-		g2.setStroke(new java.awt.BasicStroke(3));
-		g2.setColor(Color.YELLOW);
-		for(int r=0;r<map.length;r++){
-			for(int c=0;c<map[0].length;c++) {
-				Rectangle collision = new Rectangle(c*spriteSize, r*spriteSize, spriteSize, spriteSize);
-				if(map[r][c].equals("block")||map[r][c].equals("brick"))
-					g2.draw(collision);
-			}
-		}
-
-
 		if(Main.bombPlace) {
 			map[Main.bombs.get(0).xBIGpos][Main.bombs.get(0).yBIGpos]="bomb";
-
 			//System.out.println(map[TheGuy.xBIGpos][TheGuy.yBIGpos]+"("+ TheGuy.xBIGpos+", "+ TheGuy.yBIGpos+")");
 			g2.drawImage(bomb, guy.getX()-10, guy.getY()-5, spriteSize, spriteSize, this);
 			//placebomb=false;
 		}
 
 		g2.drawImage(man, guy.getX(), guy.getY(), spriteSize, spriteSize, this);
+    map[TheGuy.yBIGpos][TheGuy.xBIGpos]="guy";
 
 		for(int r=0;r<map.length;r++) {
 			for (int c = 0; c < map[0].length; c++)
 				System.out.print("("+c+", "+r+") "+map[r][c]+" ");
 			System.out.println();
 		}
-
-
-		/*window.setColor(Color.red);
-		window.drawString( "Please type something!", 250, 100 );
-
-		if(keys_typed.length()!=0)
-		{
-			window.setColor(Color.black);
-			window.fillRect(90, 130, keys_typed.length()*7 + 20, 30);
-		}
-
-		window.setColor(Color.green);
-		window.drawString( keys_typed, 100, 150 );
-
-		window.setColor(new Color( 100, 0, 100 ));
-		window.drawString( key, 250, 200 );*/
-
-	}
-
-	/*KeyListeners must have these 3 methods:
-	 * You do not have to have code in any of these, they can be empty.
-	 * But they all must be in your KeyListener for it to work.
-	 */
-
+    
 	/*1 */
 	public void keyTyped(KeyEvent e)
 	{
@@ -137,20 +96,25 @@ public class KeyBox extends Canvas implements KeyListener
 
 	/*2*/
 	public void keyPressed(KeyEvent e)
-	{
-		/*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT ) {
-			Main.moveR=true;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_LEFT ) {
-			Main.moveL=true;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_UP ) {
-			Main.moveU=true;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_DOWN ) {
-			Main.moveD=true;
-		}
+    {
+        /*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
+        //Check map to see where no move
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+            if(map[TheGuy.yBIGpos][TheGuy.xBIGpos+1].equals("empty"))
+                Main.moveR=true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+            if(map[TheGuy.yBIGpos][TheGuy.xBIGpos-1].equals("empty"))
+                Main.moveL=true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+            if(KeyBox.map[TheGuy.yBIGpos-1][TheGuy.xBIGpos].equals("empty"))
+                Main.moveU=true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+            if(map[TheGuy.yBIGpos+1][TheGuy.xBIGpos].equals("empty"))
+                Main.moveD=true;
+        }
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE ) {
 			Main.bombPlace=true;
 		}
@@ -162,19 +126,19 @@ public class KeyBox extends Canvas implements KeyListener
 
 	/*3*/
 	public void keyReleased(KeyEvent e)
-	{
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT ) {
-			Main.moveR=false;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_LEFT ) {
-			Main.moveL=false;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_UP ) {
-			Main.moveU=false;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_DOWN ) {
-			Main.moveD=false;
-		}
+    {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+            Main.moveR=false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+            Main.moveL=false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+            Main.moveU=false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+            Main.moveD=false;
+        }
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE ) {
 			Main.bombPlace=false;
 		}

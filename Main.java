@@ -17,6 +17,7 @@ public class Main {
         KeyBox.guy=new TheGuy(160,155);
         new KeyBoxRunner();
         boolean gameStarted=true;
+        
         while(gameStarted==true){
             System.out.print("");
             if(moveR==true) {

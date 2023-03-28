@@ -1,9 +1,10 @@
 public class TheGuy {
-    private static int xpos;
-    private static int ypos;
-    public static int xBIGpos;
-    public static int yBIGpos;
+    private static int xpos; //1565
+    private static int ypos; //688
+    public static int xBIGpos; //31
+    public static int yBIGpos; //13
     public static boolean placeBomb=false;
+
     public TheGuy(int x,int y){
         xpos=x;
         ypos=y;
@@ -37,9 +38,5 @@ public class TheGuy {
     public void moveYdown(){
         ypos+=50;
         yBIGpos++;
-    }
-
-    public void placeBomb(){
-        placeBomb=true;
     }
 }
