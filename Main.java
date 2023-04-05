@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,18 +10,32 @@ public class Main {
     public static boolean moveD=false;
     public static boolean bombPlace=false;
     public static ArrayList<Bomb> bombs;
+    public static int level;
+    public static boolean levelDrawn=false;
 
-    public static void main(String[] args) {
-        //Scanner console = new Scanner(System.in);
-        KeyBox.map=new String[13][31];
+    public static void main(String[] args)throws Exception {
+        Map.Cmap=new char[13][31];
         int let=0;
+        level=1;
         bombs=new ArrayList<Bomb>();
-        KeyBox.guy=new TheGuy(160,155);
+        KeyBox.guy=new TheGuy(60,55,1,1);
         new KeyBoxRunner();
         boolean gameStarted=true;
-        
+
         while(gameStarted==true){
             System.out.print("");
+            if(level==1&&levelDrawn==false) {
+                Map.placeMap("Level1.txt");
+                levelDrawn=true;
+            }
+            if(level==2&&levelDrawn==false) {
+                Map.placeMap("Level2.txt");
+                levelDrawn=true;
+            }
+            if(level==5&&levelDrawn==false) {
+                Map.placeMap("Level5.txt");
+                levelDrawn=true;
+            }
             if(moveR==true) {
                 KeyBox.guy.moveXright();
                 while(moveR==true){
