@@ -5,11 +5,11 @@ public class TheGuy {
     public static int yBIGpos; //13
     public static boolean placeBomb=false;
 
-    public TheGuy(int x,int y){
+    public TheGuy(int x,int y, int Bx,int By){
         xpos=x;
         ypos=y;
-        xBIGpos=3;
-        yBIGpos=3;
+        xBIGpos=Bx;
+        yBIGpos=By;
     }
 
     public int getX() {

@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,18 +14,30 @@ public class Main {
     public static boolean nlev;
 
     public static void main(String[] args) {
-        //Scanner console = new Scanner(System.in);
         level=1;
         KeyBox.map=new Map();
         int let=0;
+        level=1;
         bombs=new ArrayList<Bomb>();
-        KeyBox.guy=new TheGuy(160,155);
+        KeyBox.guy=new TheGuy(60,55,1,1);
         new KeyBoxRunner();
         boolean gameStarted=true;
         nlev=false;
 
         while(gameStarted==true){
             System.out.print("");
+            if(level==1&&levelDrawn==false) {
+                Map.placeMap("Level1.txt");
+                levelDrawn=true;
+            }
+            if(level==2&&levelDrawn==false) {
+                Map.placeMap("Level2.txt");
+                levelDrawn=true;
+            }
+            if(level==5&&levelDrawn==false) {
+                Map.placeMap("Level5.txt");
+                levelDrawn=true;
+            }
             if(moveR==true) {
                 KeyBox.guy.moveXright();
                 while(moveR==true){
