@@ -11,16 +11,18 @@ public class Main {
     public static boolean bombPlace=false;
     public static ArrayList<Bomb> bombs;
     public static int level;
-    public static boolean levelDrawn=false;
+    public static boolean nlev;
 
-    public static void main(String[] args)throws Exception {
-        Map.Cmap=new char[13][31];
+    public static void main(String[] args) {
+        level=1;
+        KeyBox.map=new Map();
         int let=0;
         level=1;
         bombs=new ArrayList<Bomb>();
         KeyBox.guy=new TheGuy(60,55,1,1);
         new KeyBoxRunner();
         boolean gameStarted=true;
+        nlev=false;
 
         while(gameStarted==true){
             System.out.print("");

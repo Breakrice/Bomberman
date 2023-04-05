@@ -23,20 +23,32 @@ public class TheGuy {
     public void moveXright(){
         xpos+=50;
         xBIGpos++;
+        for(int yeah=0;yeah<Main.bombs.size();yeah++){
+            Main.bombs.get(yeah).sooner();
+        }
     }
 
     public void moveXleft(){
         xpos-=50;
         xBIGpos--;
+        for(int yeah=0;yeah<Main.bombs.size();yeah++){
+            Main.bombs.get(yeah).sooner();
+        }
     }
 
     public void moveYup(){
         ypos-=50;
         yBIGpos--;
+        for(int yeah=0;yeah<Main.bombs.size();yeah++){
+            Main.bombs.get(yeah).sooner();
+        }
     }
 
     public void moveYdown(){
         ypos+=50;
         yBIGpos++;
+        for(int yeah=0;yeah<Main.bombs.size();yeah++){
+            Main.bombs.get(yeah).sooner();
+        }
     }
 }
