@@ -4,6 +4,7 @@ public class TheGuy {
     public static int xBIGpos; //31
     public static int yBIGpos; //13
     public static boolean placeBomb=false;
+    public static boolean dead=false;
 
     public TheGuy(int x,int y, int Bx,int By){
         xpos=x;

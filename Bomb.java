@@ -1,8 +1,8 @@
 public class Bomb {
-    private static int xpos;
-    private static int ypos;
-    public static int xBIGpos;
-    public static int yBIGpos;
+    private int xpos;
+    private int ypos;
+    public int xBIGpos;
+    public int yBIGpos;
     public boolean blowUp=false;
     public boolean almost=false;
     public int blowUpSoon=0;
@@ -26,8 +26,10 @@ public class Bomb {
 
     public void sooner(){
         blowUpSoon++;
-        if(blowUpSoon==5)
-            extinguish=true;
+        if(blowUpSoon==5) {
+            extinguish = true;
+            Main.bombs.remove(this);
+        }
         if(blowUpSoon==4) {
             blowUp = true;
             almExt=true;

@@ -10,8 +10,10 @@ public class Main {
     public static boolean moveD=false;
     public static boolean bombPlace=false;
     public static ArrayList<Bomb> bombs;
+    public static ArrayList<Enemy> enemies;
     public static int level;
     public static boolean nlev;
+    public static boolean gameStarted;
 
     public static void main(String[] args) throws FileNotFoundException {
         level=1;
@@ -19,13 +21,18 @@ public class Main {
         int let=0;
         level=1;
         bombs=new ArrayList<Bomb>();
-        KeyBox.guy=new TheGuy(60,55,1,1);
-        new KeyBoxRunner();
-        boolean gameStarted=true;
+        enemies=new ArrayList<Enemy>();
+        KeyBox.guy=new TheGuy(60,53,1,1);
+        gameStarted=true;
         nlev=false;
+        new KeyBoxRunner();
+        enemies.add(new Enemy(0,0,0,0));
 
         while(gameStarted==true){
             System.out.print("");
+            if(KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='f'){
+                KeyBox.guy.dead=true;
+            }
             if(moveR==true) {
                 KeyBox.guy.moveXright();
                 while(moveR==true){
