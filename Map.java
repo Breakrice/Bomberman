@@ -15,6 +15,7 @@ public class Map {
     public static char[][] L8Map=new char[13][31];
     public static char[][] L9Map=new char[13][31];
     public static char[][] L10Map=new char[13][31];
+    public static char[][] TestMap=new char[13][31];
     public static char[][] curMap;
 
     public Map() throws FileNotFoundException {
@@ -30,7 +31,6 @@ public class Map {
         maps.add(L8Map);
         maps.add(L9Map);
         maps.add(L10Map);
-        curMap=maps.get(Main.level);
     }
 
     public void placeMap()  throws FileNotFoundException{

@@ -8,6 +8,8 @@ public class Bomb {
     public int blowUpSoon=0;
     public boolean extinguish=false;
     public boolean almExt=false;
+    public static int bombs=1;
+    public static int radius=5;
 
     public Bomb(int x,int y, int Bx,int By){
         xpos=x;

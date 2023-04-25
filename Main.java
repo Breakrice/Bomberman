@@ -34,48 +34,61 @@ public class Main {
                     enemies.add(new Enemy(c * 50, r * 50, c, r, "smartest"));
             }
 
-        while(gameStarted==true){
+        while(gameStarted){
             System.out.print("");
             if(KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='f' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='w' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='s' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='a'){
-                KeyBox.guy.dead=true;
+                TheGuy.lives--;
+                if(TheGuy.lives<1)
+                    TheGuy.dead =true;
             }
-            if(moveR==true) {
+            if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='h'){
+                if(TheGuy.lives!=5)
+                    TheGuy.lives++;
+            }
+            if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='i'){
+
+            }
+            if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='t'){
+
+            }
+            if(moveR) {
                 KeyBox.guy.moveXright();
-                while(moveR==true){
+                while(moveR){
                     let++;
                     let--;
                     System.out.print("");
                 }
             }
-            if(moveL==true){
+            if(moveL){
                 KeyBox.guy.moveXleft();
-                while(moveL==true){
+                while(moveL){
                     let++;
                     let--;
                     System.out.print("");
                 }
             }
-            if(moveU==true){
+            if(moveU){
                 KeyBox.guy.moveYup();
-                while(moveU==true){
+                while(moveU){
                     let++;
                     let--;
                     System.out.print("");
                 }
             }
-            if(moveD==true){
+            if(moveD){
                 KeyBox.guy.moveYdown();
-                while(moveD==true){
+                while(moveD){
                     let++;
                     let--;
                     System.out.print("");
                 }
             }
-            if(bombPlace==true){
+            if(bombPlace){
                 let++;
                 let--;
-                bombs.add(new Bomb(KeyBox.guy.getX(),KeyBox.guy.getY(),TheGuy.xBIGpos,TheGuy.yBIGpos));
-                while(bombPlace==true){
+                if(bombs.size()<Bomb.bombs)
+                    bombs.add(new Bomb(KeyBox.guy.getX(),KeyBox.guy.getY(),TheGuy.xBIGpos,TheGuy.yBIGpos));
+                while(bombPlace){
                     let++;
                     let--;
                     System.out.print("");
