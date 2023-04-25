@@ -30,44 +30,45 @@ public class Map {
         maps.add(L8Map);
         maps.add(L9Map);
         maps.add(L10Map);
-        curMap=maps.get(0);
+        curMap=maps.get(Main.level);
     }
 
     public void placeMap()  throws FileNotFoundException{
         Scanner file=new Scanner(new File("Level1.txt"));
         for(int p=0;p<13;p++)
-            L1Map[p]=file.next().toCharArray();
+            L1Map[p] = file.next().toCharArray();
         file=new Scanner(new File("Level2.txt"));
         for(int p=0;p<13;p++)
             L2Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level3.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L3Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level4.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L4Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level5.txt"));
         for(int p=0;p<13;p++)
             L5Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level6.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L6Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level7.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L7Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level8.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L8Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level9.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L9Map[p]=file.next().toCharArray();
         file=new Scanner(new File("Level10.txt"));
         for(int p=0;p<13;p++)
-            L5Map[p]=file.next().toCharArray();
+            L10Map[p]=file.next().toCharArray();
     }
 
     public void newLevel(){
         Main.level++;
+        curMap=maps.get(Main.level);
     }
 
     public char[][] whatMap(){

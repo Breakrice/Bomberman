@@ -16,21 +16,27 @@ public class Main {
     public static boolean gameStarted;
 
     public static void main(String[] args) throws FileNotFoundException {
-        level=1;
+        level=0;
         KeyBox.map=new Map();
         int let=0;
-        level=1;
         bombs=new ArrayList<Bomb>();
         enemies=new ArrayList<Enemy>();
-        KeyBox.guy=new TheGuy(60,53,1,1);
         gameStarted=true;
         nlev=false;
         new KeyBoxRunner();
-        enemies.add(new Enemy(0,0,0,0));
+        for (int r = 0; r < KeyBox.map.whatMap().length; r++)
+            for (int c = 0; c < KeyBox.map.whatMap()[0].length; c++) {
+                if (KeyBox.map.whatMap()[r][c] == 'w')
+                    enemies.add(new Enemy(c * 50, r * 50, c, r, "dumb"));
+                if(KeyBox.map.whatMap()[r][c] == 's')
+                    enemies.add(new Enemy(c * 50, r * 50, c, r, "smart"));
+                if(KeyBox.map.whatMap()[r][c] == 'a')
+                    enemies.add(new Enemy(c * 50, r * 50, c, r, "smartest"));
+            }
 
         while(gameStarted==true){
             System.out.print("");
-            if(KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='f'){
+            if(KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='f' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='w' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='s' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='a'){
                 KeyBox.guy.dead=true;
             }
             if(moveR==true) {
@@ -70,6 +76,27 @@ public class Main {
                 let--;
                 bombs.add(new Bomb(KeyBox.guy.getX(),KeyBox.guy.getY(),TheGuy.xBIGpos,TheGuy.yBIGpos));
                 while(bombPlace==true){
+                    let++;
+                    let--;
+                    System.out.print("");
+                }
+            }
+            if(enemies.size()==0) {
+                bombs=new ArrayList<Bomb>();
+                if (level < 10) {
+                    KeyBox.map.newLevel();
+                    nlev=true;
+                }
+                for (int r = 0; r < KeyBox.map.whatMap().length; r++)
+                    for (int c = 0; c < KeyBox.map.whatMap()[0].length; c++) {
+                        if (KeyBox.map.whatMap()[r][c] == 'w')
+                            enemies.add(new Enemy(c * 50, r * 50, c, r, "dumb"));
+                        if(KeyBox.map.whatMap()[r][c] == 's')
+                            enemies.add(new Enemy(c * 50, r * 50, c, r, "smart"));
+                        if(KeyBox.map.whatMap()[r][c] == 'a')
+                            enemies.add(new Enemy(c * 50, r * 50, c, r, "smartest"));
+                    }
+                while(nlev==true){
                     let++;
                     let--;
                     System.out.print("");
