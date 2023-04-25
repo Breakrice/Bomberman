@@ -31,14 +31,12 @@ public class Map {
         maps.add(L8Map);
         maps.add(L9Map);
         maps.add(L10Map);
-        maps.add(TestMap);
-        curMap=maps.get(10);
     }
 
     public void placeMap()  throws FileNotFoundException{
         Scanner file=new Scanner(new File("Level1.txt"));
         for(int p=0;p<13;p++)
-            L1Map[p]=file.next().toCharArray();
+            L1Map[p] = file.next().toCharArray();
         file=new Scanner(new File("Level2.txt"));
         for(int p=0;p<13;p++)
             L2Map[p]=file.next().toCharArray();
@@ -66,13 +64,11 @@ public class Map {
         file=new Scanner(new File("Level10.txt"));
         for(int p=0;p<13;p++)
             L10Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level Test"));
-        for(int p=0;p<13;p++)
-            TestMap[p]=file.next().toCharArray();
     }
 
     public void newLevel(){
         Main.level++;
+        curMap=maps.get(Main.level);
     }
 
     public char[][] whatMap(){
