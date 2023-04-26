@@ -36,20 +36,26 @@ public class Main {
 
         while(gameStarted){
             System.out.print("");
-            if(KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='f' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='w' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='s' || KeyBox.map.whatMap()[KeyBox.guy.yBIGpos][KeyBox.guy.xBIGpos]=='a'){
+            if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='f' || KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='w' || KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='s' || KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='a'){
                 TheGuy.lives--;
+                while(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='f')
                 if(TheGuy.lives<1)
                     TheGuy.dead =true;
             }
             if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='h'){
                 if(TheGuy.lives!=5)
                     TheGuy.lives++;
+                KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]='e';
             }
             if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='i'){
-
+                if(Bomb.radius!=10)
+                    Bomb.radius++;
+                KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]='e';
             }
             if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='t'){
-
+                if(Bomb.bombs!=10)
+                    Bomb.bombs++;
+                KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]='e';
             }
             if(moveR) {
                 KeyBox.guy.moveXright();
