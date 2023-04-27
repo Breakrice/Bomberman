@@ -101,7 +101,7 @@ public class KeyBox extends JPanel implements KeyListener {
                         if (!spawnpowerup && powerup != 0)
                             KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'f';
                     }
-                    else
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] != 'h')
                         keepBlowing=false;
                 }
                 keepBlowing=true;
@@ -131,7 +131,7 @@ public class KeyBox extends JPanel implements KeyListener {
                         if (!spawnpowerup && powerup != 0)
                             KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'f';
                     }
-                    else
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] != 'h')
                         keepBlowing=false;
                 }
                 keepBlowing=true;
@@ -160,7 +160,7 @@ public class KeyBox extends JPanel implements KeyListener {
                         if (!spawnpowerup && powerup != 0)
                             KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'f';
                     }
-                    else
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] != 'h')
                         keepBlowing=false;
                 }
                 keepBlowing=true;
@@ -189,7 +189,7 @@ public class KeyBox extends JPanel implements KeyListener {
                         if (!spawnpowerup && powerup != 0)
                             KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'f';
                     }
-                    else
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] != 'h')
                         keepBlowing=false;
                 }
             }
