@@ -8,63 +8,65 @@ import java.util.Scanner;
 
 // this is only to test if the keys are pressed.
 public class KeyBox extends JPanel implements KeyListener {
-    private String keys_typed;
-    private String key;
-    public static Map map;
-    public static TheGuy guy;
-    private int spriteSize = 50;
-    public static boolean placebomb = false;
-    public static boolean keepBlowing=false;
+	private String keys_typed;
+	private String key;
+	public static Map map;
+	public static TheGuy guy;
+	private int spriteSize = 50;
+	public static boolean placebomb = false;
+	public static boolean keepBlowing=false;
+	public static int enemies;
 
-    //this is the constructor
-    public KeyBox() {
-        key = "NO KEY PRESSED YET";
+	//this is the constructor
+	public KeyBox() {
+		key = "NO KEY PRESSED YET";
 
-        keys_typed = "";
+		keys_typed = "";
 
-        addKeyListener(this); /*all keyListeners must have this in the constructor*/
+		addKeyListener(this); /*all keyListeners must have this in the constructor*/
 
-        setFocusable(true);
-    }
+		setFocusable(true);
+	}
 
 
-    public void paint(Graphics window) {
-        Graphics2D g2 = (Graphics2D) window;
-        Image background = Toolkit.getDefaultToolkit().getImage("background.png");
-        g2.drawImage(background, 0, 0, 1565, 688, this);
-        Image man = Toolkit.getDefaultToolkit().getImage("front facing man.png");
-        Image block = Toolkit.getDefaultToolkit().getImage("block.jpg");
-        Image brick = Toolkit.getDefaultToolkit().getImage("brick.jpg");
-        Image bomb = Toolkit.getDefaultToolkit().getImage("bomb.png");
-        Image expBomb = Toolkit.getDefaultToolkit().getImage("explode_bomb.png");
-        Image flame = Toolkit.getDefaultToolkit().getImage("Flame.jpg");
-        Image L = Toolkit.getDefaultToolkit().getImage("L.jpg");
-        Image E = Toolkit.getDefaultToolkit().getImage("E.jpg");
-        Image V = Toolkit.getDefaultToolkit().getImage("V.jpg");
-        Image N = Toolkit.getDefaultToolkit().getImage("N.jpg");
-        Image M = Toolkit.getDefaultToolkit().getImage("M.jpg");
-        Image Y = Toolkit.getDefaultToolkit().getImage("Y.jpg");
-        Image One = Toolkit.getDefaultToolkit().getImage("1.jpg");
-        Image Two = Toolkit.getDefaultToolkit().getImage("2.jpg");
-        Image Three = Toolkit.getDefaultToolkit().getImage("3.jpg");
-        Image Four = Toolkit.getDefaultToolkit().getImage("four.jpg");
-        Image Five = Toolkit.getDefaultToolkit().getImage("five.jpg");
-        Image Six = Toolkit.getDefaultToolkit().getImage("six.jpg");
-        Image Seven = Toolkit.getDefaultToolkit().getImage("7.jpg");
-        Image Eight = Toolkit.getDefaultToolkit().getImage("8.jpg");
-        Image Nine = Toolkit.getDefaultToolkit().getImage("9.jpg");
-        Image Zero = Toolkit.getDefaultToolkit().getImage("0.jpg");
-        Image bombPowerup = Toolkit.getDefaultToolkit().getImage("bomb powerup.png");
-        Image explosionPowerup = Toolkit.getDefaultToolkit().getImage("explosion powerup.png");
-        Image healthPowerup = Toolkit.getDefaultToolkit().getImage("health powerup.png");
-        Image speedPowerup = Toolkit.getDefaultToolkit().getImage("speed powerup.png");
-        Image RW = Toolkit.getDefaultToolkit().getImage("rw enemy.png");
-        Image LOS = Toolkit.getDefaultToolkit().getImage("LOS enemy.png");
-        Image AK = Toolkit.getDefaultToolkit().getImage("AK enemy.png");
+	public void paint(Graphics window) {
+		Graphics2D g2 = (Graphics2D) window;
+		Image background = Toolkit.getDefaultToolkit().getImage("assets/background.png");
+		g2.drawImage(background, 0, 0, 1565, 688, this);
+		Image man = Toolkit.getDefaultToolkit().getImage("assets/front facing man.png");
+		Image block = Toolkit.getDefaultToolkit().getImage("assets/block.jpg");
+		Image brick = Toolkit.getDefaultToolkit().getImage("assets/brick.jpg");
+		Image bomb = Toolkit.getDefaultToolkit().getImage("assets/bomb.png");
+		Image expBomb = Toolkit.getDefaultToolkit().getImage("assets/explode_bomb.png");
+		Image flame = Toolkit.getDefaultToolkit().getImage("assets/Flame.jpg");
+		Image L = Toolkit.getDefaultToolkit().getImage("assets/L.jpg");
+		Image E = Toolkit.getDefaultToolkit().getImage("assets/E.jpg");
+		Image V = Toolkit.getDefaultToolkit().getImage("assets/V.jpg");
+		Image N = Toolkit.getDefaultToolkit().getImage("assets/N.jpg");
+		Image M = Toolkit.getDefaultToolkit().getImage("assets/M.jpg");
+		Image Y = Toolkit.getDefaultToolkit().getImage("assets/Y.jpg");
+		Image I = Toolkit.getDefaultToolkit().getImage("assets/I.jpg");
+		Image S = Toolkit.getDefaultToolkit().getImage("assets/S.jpg");
+		Image One = Toolkit.getDefaultToolkit().getImage("assets/1.jpg");
+		Image Two = Toolkit.getDefaultToolkit().getImage("assets/2.jpg");
+		Image Three = Toolkit.getDefaultToolkit().getImage("assets/3.jpg");
+		Image Four = Toolkit.getDefaultToolkit().getImage("assets/four.jpg");
+		Image Five = Toolkit.getDefaultToolkit().getImage("assets/five.jpg");
+		Image Six = Toolkit.getDefaultToolkit().getImage("assets/six.jpg");
+		Image Seven = Toolkit.getDefaultToolkit().getImage("7assets/.jpg");
+		Image Eight = Toolkit.getDefaultToolkit().getImage("assets/8.jpg");
+		Image Nine = Toolkit.getDefaultToolkit().getImage("assets/9.jpg");
+		Image Zero = Toolkit.getDefaultToolkit().getImage("assets/0.jpg");
+		Image bombPowerup = Toolkit.getDefaultToolkit().getImage("assets/bomb powerup.png");
+		Image explosionPowerup = Toolkit.getDefaultToolkit().getImage("assets/explosion powerup.png");
+		Image healthPowerup = Toolkit.getDefaultToolkit().getImage("assets/health powerup.png");
+		Image speedPowerup = Toolkit.getDefaultToolkit().getImage("assets/speed powerup.png");
+		Image RW = Toolkit.getDefaultToolkit().getImage("assets/rw enemy.png");
+		Image LOS = Toolkit.getDefaultToolkit().getImage("assets/LOS enemy.png");
+		Image AK = Toolkit.getDefaultToolkit().getImage("assets/AK enemy.png");
 
-        int powerup=1;
-        int enemy=0;
-        Boolean spawnpowerup=false;
+		int powerup=1;
+		Boolean spawnpowerup=false;
 
         for(int z=Main.bombs.size()-1;z>-1;z--){
             if(!Main.bombs.get(z).blowUp){
@@ -161,15 +163,43 @@ public class KeyBox extends JPanel implements KeyListener {
             if(Main.enemies.get(z).deadYet())
                 Main.enemies.remove(z);
 
-        if(Main.enemies.size()>0) {
-            boolean writemap=false;
-            if(writemap) {
-                for (int i = 0; i < map.whatMap().length; i++) {
-                    for (int j = 0; j < map.whatMap()[0].length; j++)
-                        System.out.print(map.whatMap()[i][j]);
-                    System.out.println();
-                }
-            }
+							}
+						if (powerup > 50 && powerup < 63)
+								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'i';
+							else if (powerup > 62 && powerup < 75)
+								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 't';
+							else if (powerup > 74 && powerup < 87)
+								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'h';
+						}
+						if (!spawnpowerup && powerup != 0)
+							KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'f';
+					}
+					else
+						keepBlowing=false;
+				}
+				keepBlowing=true;
+				for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
+					if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'a') {
+						if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'r') {
+							powerup = (int) (Math.random() * 86);
+							if (powerup > 50)
+								spawnpowerup = true;
+							}
+						if (powerup > 50 && powerup < 67)
+								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'i';
+							else if (powerup > 66 && powerup < 82)
+								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 't';
+							else if (powerup > 81 && powerup < 87)
+								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'h';
+						}
+						if (!spawnpowerup && powerup != 0)
+							KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'f';
+					}
+					else
+						keepBlowing=false;
+				}
+			}
+		}
 
             Main.startOver=false;
 
@@ -235,103 +265,164 @@ public class KeyBox extends JPanel implements KeyListener {
                         if(map.whatMap()[r][c] == ('p'))
                             g2.drawImage(speedPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
                         if (map.whatMap()[r][c] == ('g')) {
-                            guy = new TheGuy(c * spriteSize + 10, r * spriteSize + 3, c, r);
-                            KeyBox.guy.startXBIGpos=c;
-                            KeyBox.guy.startYBIGpos=r;
-                            KeyBox.guy.startXpos=c*spriteSize+10;
-                            KeyBox.guy.startYpos=r*spriteSize+3;
-                            map.whatMap()[r][c] = 'e';
-                            Main.nlev = false;
-                        }
-                    }
+							guy = new TheGuy(c * spriteSize + 10, r * spriteSize + 3, c, r);
+							map.whatMap()[r][c] = 'e';
+							Main.nlev = false;
+						}
+					}
 
-                g2.drawImage(man, guy.getX(), guy.getY(), 125, 125, this);
-            }
-            else
-                Main.gameStarted=false;
-        }
-        else
-            repaint();
-    }
+				g2.drawImage(man, guy.getX(), guy.getY(), 125, 125, this);
+			}
+			else
+				Main.gameStarted=false;
+		}
+		else
+			repaint();
+	}
+  
+if(TheGuy.lives==5)
+			KeyBox.map.whatMap()[12][7] = '5';
+		if(TheGuy.lives==4)
+			KeyBox.map.whatMap()[12][7] = '4';
+		if(TheGuy.lives==3)
+			KeyBox.map.whatMap()[12][7] = '3';
+		if(TheGuy.lives==2)
+			KeyBox.map.whatMap()[12][7] = '2';
+		if(TheGuy.lives==1)
+			KeyBox.map.whatMap()[12][7] = '1';
 
-    /*1 */
-    public void keyTyped(KeyEvent e)
-    {
-        keys_typed += "" + e.getKeyChar();
-        repaint();
-    }
+		if(Main.enemies.size()/10==0)
+			KeyBox.map.whatMap()[0][17] = '0';
+		if(Main.enemies.size()/10==1)
+			KeyBox.map.whatMap()[0][17] = '1';
+		if(Main.enemies.size()/10==2)
+			KeyBox.map.whatMap()[0][17] = '2';
+		if(Main.enemies.size()/10==3)
+			KeyBox.map.whatMap()[0][17] = '3';
+		if(Main.enemies.size()>=10) {
+			if (Main.enemies.size()%10 == 9)
+				KeyBox.map.whatMap()[0][18] = '9';
+			if (Main.enemies.size()%10 == 8)
+				KeyBox.map.whatMap()[0][18] = '8';
+			if (Main.enemies.size()%10 == 7)
+				KeyBox.map.whatMap()[0][18] = '7';
+			if (Main.enemies.size()%10 == 6)
+				KeyBox.map.whatMap()[0][18] = '6';
+			if (Main.enemies.size()%10 == 5)
+				KeyBox.map.whatMap()[0][18] = '5';
+			if (Main.enemies.size()%10 == 4)
+				KeyBox.map.whatMap()[0][18] = '4';
+			if (Main.enemies.size()%10 == 3)
+				KeyBox.map.whatMap()[0][18] = '3';
+			if (Main.enemies.size()%10 == 2)
+				KeyBox.map.whatMap()[0][18] = '2';
+			if (Main.enemies.size()%10 == 1)
+				KeyBox.map.whatMap()[0][18] = '1';
+			if (Main.enemies.size()%10 == 0)
+				KeyBox.map.whatMap()[0][18] = '0';
+		}
+		if (Main.enemies.size() == 9)
+			KeyBox.map.whatMap()[0][18] = '9';
+		if (Main.enemies.size() == 8)
+			KeyBox.map.whatMap()[0][18] = '8';
+		if (Main.enemies.size() == 7)
+			KeyBox.map.whatMap()[0][18] = '7';
+		if (Main.enemies.size() == 6)
+			KeyBox.map.whatMap()[0][18] = '6';
+		if (Main.enemies.size() == 5)
+			KeyBox.map.whatMap()[0][18] = '5';
+		if (Main.enemies.size() == 4)
+			KeyBox.map.whatMap()[0][18] = '4';
+		if (Main.enemies.size() == 3)
+			KeyBox.map.whatMap()[0][18] = '3';
+		if (Main.enemies.size() == 2)
+			KeyBox.map.whatMap()[0][18] = '2';
+		if (Main.enemies.size() == 1)
+			KeyBox.map.whatMap()[0][18] = '1';
 
-    /*2*/
-    public void keyPressed(KeyEvent e)
-    {
-        /*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
-            if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='t' ||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='w'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='s'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='a')
-                Main.moveR=true;
-            else
-                for(int yeah=0;yeah<Main.bombs.size();yeah++)
-                    Main.bombs.get(yeah).sooner();
-            for(Enemy z: Main.enemies)
-                z.moveChoose();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
-            if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='t' ||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='w'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='s'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='a')
-                Main.moveL=true;
-            else
-                for(int yeah=0;yeah<Main.bombs.size();yeah++)
-                    Main.bombs.get(yeah).sooner();
-            for(Enemy z: Main.enemies)
-                z.moveChoose();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
-            if(map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='t' || map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='w'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='s'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='a')
-                Main.moveU=true;
-            else
-                for(int yeah=0;yeah<Main.bombs.size();yeah++)
-                    Main.bombs.get(yeah).sooner();
-            for(Enemy z: Main.enemies)
-                z.moveChoose();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
-            if(map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='t' ||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='w'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='s'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='a')
-                Main.moveD=true;
-            else
-                for(int yeah=0;yeah<Main.bombs.size();yeah++)
-                    Main.bombs.get(yeah).sooner();
-            for(Enemy z: Main.enemies)
-                z.moveChoose();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_SPACE ) {
-            Main.bombPlace=true;
-        }
-        else {
-            key = "Key " + e.getKeyCode() + " is pressed!";
-        }
-        repaint();
-    }
+		for(int z = Main.enemies.size()-1; z>-1; z--)
+			if(Main.enemies.get(z).deadYet()) {
+				Main.enemies.remove(z);
+			}
+      
+	/*1 */
+	public void keyTyped(KeyEvent e)
+	{
+		keys_typed += "" + e.getKeyChar();
+		repaint();
+	}
 
-    /*3*/
-    public void keyReleased(KeyEvent e)
-    {
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
-            Main.moveR=false;
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
-            Main.moveL=false;
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
-            Main.moveU=false;
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
-            Main.moveD=false;
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_SPACE ) {
-            Main.bombPlace=false;
-        }
-        //add another else if to check if another key was released..
-        else{
-            key = "Key "+ e.getKeyCode() +" was released!";
-        }
-        repaint();
-    }
+	/*2*/
+	public void keyPressed(KeyEvent e)
+	{
+		/*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+			if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='t')
+				Main.moveR=true;
+			else
+				for(int yeah=0;yeah<Main.bombs.size();yeah++)
+					Main.bombs.get(yeah).sooner();
+			for(Enemy z: Main.enemies)
+				z.moveChoose();
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+			if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='t')
+				Main.moveL=true;
+			else
+				for(int yeah=0;yeah<Main.bombs.size();yeah++)
+					Main.bombs.get(yeah).sooner();
+			for(Enemy z: Main.enemies)
+				z.moveChoose();
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+			if(map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='t')
+				Main.moveU=true;
+			else
+				for(int yeah=0;yeah<Main.bombs.size();yeah++)
+					Main.bombs.get(yeah).sooner();
+			for(Enemy z: Main.enemies)
+				z.moveChoose();
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+			if(map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='t')
+				Main.moveD=true;
+			else
+				for(int yeah=0;yeah<Main.bombs.size();yeah++)
+					Main.bombs.get(yeah).sooner();
+			for(Enemy z: Main.enemies)
+				z.moveChoose();
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_SPACE ) {
+			Main.bombPlace=true;
+		}
+		else {
+			key = "Key " + e.getKeyCode() + " is pressed!";
+		}
+		repaint();
+	}
+
+	/*3*/
+	public void keyReleased(KeyEvent e)
+	{
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+			Main.moveR=false;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+			Main.moveL=false;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+			Main.moveU=false;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+			Main.moveD=false;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_SPACE ) {
+			Main.bombPlace=false;
+		}
+		//add another else if to check if another key was released..
+		else{
+			key = "Key "+ e.getKeyCode() +" was released!";
+		}
+		repaint();
+	}
 }

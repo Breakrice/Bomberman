@@ -113,14 +113,17 @@ public class Main {
                 }
                 for (int r = 0; r < KeyBox.map.whatMap().length; r++)
                     for (int c = 0; c < KeyBox.map.whatMap()[0].length; c++) {
-                        if (KeyBox.map.whatMap()[r][c] == 'w')
+                        if (KeyBox.map.whatMap()[r][c] == 'w') {
                             enemies.add(new Enemy(c * 50, r * 50, c, r, "dumb"));
-                        if(KeyBox.map.whatMap()[r][c] == 's')
+                        }
+                        if(KeyBox.map.whatMap()[r][c] == 's') {
                             enemies.add(new Enemy(c * 50, r * 50, c, r, "smart"));
-                        if(KeyBox.map.whatMap()[r][c] == 'a')
+                        }
+                        if(KeyBox.map.whatMap()[r][c] == 'a') {
                             enemies.add(new Enemy(c * 50, r * 50, c, r, "smartest"));
+                        }
                     }
-                while(nlev==true){
+                while(nlev){
                     let++;
                     let--;
                     System.out.print("");

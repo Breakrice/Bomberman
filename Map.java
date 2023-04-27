@@ -35,34 +35,34 @@ public class Map {
     }
 
     public void placeMap()  throws FileNotFoundException{
-        Scanner file=new Scanner(new File("Level1.txt"));
+        Scanner file=new Scanner(new File("levels/Level1.txt"));
         for(int p=0;p<13;p++)
             L1Map[p] = file.next().toCharArray();
-        file=new Scanner(new File("Level2.txt"));
+        file=new Scanner(new File("levels/Level2.txt"));
         for(int p=0;p<13;p++)
             L2Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level3.txt"));
+        file=new Scanner(new File("levels/Level3.txt"));
         for(int p=0;p<13;p++)
             L3Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level4.txt"));
+        file=new Scanner(new File("levels/Level4.txt"));
         for(int p=0;p<13;p++)
             L4Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level5.txt"));
+        file=new Scanner(new File("levels/Level5.txt"));
         for(int p=0;p<13;p++)
             L5Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level6.txt"));
+        file=new Scanner(new File("levels/Level6.txt"));
         for(int p=0;p<13;p++)
             L6Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level7.txt"));
+        file=new Scanner(new File("levels/Level7.txt"));
         for(int p=0;p<13;p++)
             L7Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level8.txt"));
+        file=new Scanner(new File("levels/Level8.txt"));
         for(int p=0;p<13;p++)
             L8Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level9.txt"));
+        file=new Scanner(new File("levels/Level9.txt"));
         for(int p=0;p<13;p++)
             L9Map[p]=file.next().toCharArray();
-        file=new Scanner(new File("Level10.txt"));
+        file=new Scanner(new File("levels/Level10.txt"));
         for(int p=0;p<13;p++)
             L10Map[p]=file.next().toCharArray();
     }
