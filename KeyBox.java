@@ -66,68 +66,102 @@ public class KeyBox extends JPanel implements KeyListener {
 		Image AK = Toolkit.getDefaultToolkit().getImage("assets/AK enemy.png");
 
 		int powerup=1;
-		int enemy=0;
 		Boolean spawnpowerup=false;
 
-		for(int z=Main.bombs.size()-1;z>-1;z--){
-			if(!Main.bombs.get(z).blowUp){
-				if(!Main.bombs.get(z).almost)
-					KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos] = 'o';
-				else
-					KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos] = 'x';
-			}
-			else {
-				KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos] = 'f';
-				keepBlowing = true;
-				for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
-					if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'a') {
-						if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'r') {
-							powerup = (int) (Math.random() * 86); //98
-							if (powerup > 50)
-								spawnpowerup = true;
-
-							}
-						if (powerup > 50 && powerup < 63)
-								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'i';
-							else if (powerup > 62 && powerup < 75)
-								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 't';
-							else if (powerup > 74 && powerup < 87)
-								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'h';
-						}
-						if (!spawnpowerup && powerup != 0)
-							KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'f';
-					}
-					else
-						keepBlowing=false;
-				}
-				keepBlowing=true;
-				for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
-					if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'a') {
-						if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'r') {
-							powerup = (int) (Math.random() * 86);
-							if (powerup > 50)
-								spawnpowerup = true;
-							}
-						if (powerup > 50 && powerup < 63)
-								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'i';
-							else if (powerup > 62 && powerup < 75)
-								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 't';
-							else if (powerup > 74 && powerup < 87)
-								KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'h';
-						}
-						if (!spawnpowerup && powerup != 0)
-							KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'f';
-					}
-					else
-						keepBlowing=false;
-				}
-				keepBlowing=true;
-				for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
-					if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'a') {
-						if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'r') {
-							powerup = (int) (Math.random() * 86);
-							if (powerup > 50)
-								spawnpowerup = true;
+        for(int z=Main.bombs.size()-1;z>-1;z--){
+            if(!Main.bombs.get(z).blowUp){
+                if(!Main.bombs.get(z).almost)
+                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos] = 'o';
+                else
+                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos] = 'x';
+            }
+            else {
+                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos] = 'f';
+                keepBlowing = true;
+                for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
+                    if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'a') {
+                        if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] == 'r') {
+                            powerup = (int) (Math.random() * 86); //98
+                            if (powerup > 50)
+                                spawnpowerup = true;
+                            if (powerup > 50 && powerup < 63)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'i';
+                            else if (powerup > 62 && powerup < 75)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 't';
+                            else if (powerup > 74 && powerup < 87)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'h';
+                        }
+                        if (!spawnpowerup && powerup != 0)
+                            KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'f';
+                    }
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] != 'h')
+                        keepBlowing=false;
+                }
+                keepBlowing=true;
+                for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
+                    if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'a') {
+                        if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] == 'r') {
+                            powerup = (int) (Math.random() * 86);
+                            if (powerup > 50)
+                                spawnpowerup = true;
+                            if (powerup > 50 && powerup < 63)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'i';
+                            else if (powerup > 62 && powerup < 75)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 't';
+                            else if (powerup > 74 && powerup < 87)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'h';
+                        }
+                        if (!spawnpowerup && powerup != 0)
+                            KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'f';
+                    }
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] != 'h')
+                        keepBlowing=false;
+                }
+                keepBlowing=true;
+                for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
+                    if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'a') {
+                        if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] == 'r') {
+                            powerup = (int) (Math.random() * 86);
+                            if (powerup > 50)
+                                spawnpowerup = true;
+                            if (powerup > 50 && powerup < 63)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'i';
+                            else if (powerup > 62 && powerup < 75)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 't';
+                            else if (powerup > 74 && powerup < 87)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'h';
+                        }
+                        if (!spawnpowerup && powerup != 0)
+                            KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'f';
+                    }
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] != 'h')
+                        keepBlowing=false;
+                }
+                keepBlowing=true;
+                for (int i = 1; i <= Bomb.radius && keepBlowing == true; i++) {
+                    if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'r' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'e' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'w' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'o' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'x' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 's' || KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'a') {
+                        if (KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] == 'r') {
+                            powerup = (int) (Math.random() * 86);
+                            if (powerup > 50)
+                                spawnpowerup = true;
+                            if (powerup > 50 && powerup < 67)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'i';
+                            else if (powerup > 66 && powerup < 82)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 't';
+                            else if (powerup > 81 && powerup < 87)
+                                KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'h';
+                        }
+                        if (!spawnpowerup && powerup != 0)
+                            KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'f';
+                    }
+                    else if(KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] != 'i' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] != 't' && KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] != 'h')
+                        keepBlowing=false;
+                }
+            }
+        }
+        for(int z = Main.enemies.size()-1; z>-1; z--)
+            if(Main.enemies.get(z).deadYet())
+                Main.enemies.remove(z);
 
 							}
 						if (powerup > 50 && powerup < 63)
@@ -167,7 +201,86 @@ public class KeyBox extends JPanel implements KeyListener {
 			}
 		}
 
-		if(TheGuy.lives==5)
+            Main.startOver=false;
+
+            if(guy.dead==false) {
+                for (int r = 0; r < map.whatMap().length; r++)
+                    for (int c = 0; c < map.whatMap()[0].length; c++) {
+                        if (map.whatMap()[r][c] == ('b'))
+                            g2.drawImage(block, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('r'))
+                            g2.drawImage(brick, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('L'))
+                            g2.drawImage(L, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('E'))
+                            g2.drawImage(E, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('V'))
+                            g2.drawImage(V, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('N'))
+                            g2.drawImage(N, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('M'))
+                            g2.drawImage(M, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('Y'))
+                            g2.drawImage(Y, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('1'))
+                            g2.drawImage(One, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('2'))
+                            g2.drawImage(Two, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('3'))
+                            g2.drawImage(Three, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('4'))
+                            g2.drawImage(Four, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('5'))
+                            g2.drawImage(Five, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('6'))
+                            g2.drawImage(Six, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('7'))
+                            g2.drawImage(Seven, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('8'))
+                            g2.drawImage(Eight, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('9'))
+                            g2.drawImage(Nine, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('0'))
+                            g2.drawImage(Zero, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('w'))
+                            g2.drawImage(RW, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('s'))
+                            g2.drawImage(LOS, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('a'))
+                            g2.drawImage(AK, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('o'))
+                            g2.drawImage(bomb, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('x'))
+                            g2.drawImage(expBomb, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('f'))
+                            g2.drawImage(flame, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('f'))
+                            KeyBox.map.makeEmpty(c,r);
+                        if(map.whatMap()[r][c] == ('h'))
+                            g2.drawImage(healthPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('i'))
+                            g2.drawImage(explosionPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('t'))
+                            g2.drawImage(bombPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if(map.whatMap()[r][c] == ('p'))
+                            g2.drawImage(speedPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
+                        if (map.whatMap()[r][c] == ('g')) {
+							guy = new TheGuy(c * spriteSize + 10, r * spriteSize + 3, c, r);
+							map.whatMap()[r][c] = 'e';
+							Main.nlev = false;
+						}
+					}
+
+				g2.drawImage(man, guy.getX(), guy.getY(), 125, 125, this);
+			}
+			else
+				Main.gameStarted=false;
+		}
+		else
+			repaint();
+	}
+  
+if(TheGuy.lives==5)
 			KeyBox.map.whatMap()[12][7] = '5';
 		if(TheGuy.lives==4)
 			KeyBox.map.whatMap()[12][7] = '4';
@@ -231,98 +344,7 @@ public class KeyBox extends JPanel implements KeyListener {
 			if(Main.enemies.get(z).deadYet()) {
 				Main.enemies.remove(z);
 			}
-
-		if(Main.enemies.size()>0) {
-			boolean writemap=false;
-			if(writemap) {
-				for (int i = 0; i < map.whatMap().length; i++) {
-					for (int j = 0; j < map.whatMap()[0].length; j++)
-						System.out.print(map.whatMap()[i][j]);
-					System.out.println();
-				}
-			}
-
-			if(guy.dead==false) {
-				for (int r = 0; r < map.whatMap().length; r++)
-					for (int c = 0; c < map.whatMap()[0].length; c++) {
-						if (map.whatMap()[r][c] == ('b'))
-							g2.drawImage(block, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('r'))
-							g2.drawImage(brick, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('L'))
-							g2.drawImage(L, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('E'))
-							g2.drawImage(E, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('V'))
-							g2.drawImage(V, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('N'))
-							g2.drawImage(N, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('M'))
-							g2.drawImage(M, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('Y'))
-							g2.drawImage(Y, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('I'))
-							g2.drawImage(I, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('S'))
-							g2.drawImage(S, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('1'))
-							g2.drawImage(One, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('2'))
-							g2.drawImage(Two, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('3'))
-							g2.drawImage(Three, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('4'))
-							g2.drawImage(Four, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('5'))
-							g2.drawImage(Five, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('6'))
-							g2.drawImage(Six, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('7'))
-							g2.drawImage(Seven, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('8'))
-							g2.drawImage(Eight, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('9'))
-							g2.drawImage(Nine, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('0'))
-							g2.drawImage(Zero, c * spriteSize, r * spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('w'))
-							g2.drawImage(RW, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('s'))
-							g2.drawImage(LOS, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('a'))
-							g2.drawImage(AK, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('o'))
-							g2.drawImage(bomb, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('x'))
-							g2.drawImage(expBomb, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('f'))
-							g2.drawImage(flame, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('f'))
-							KeyBox.map.makeEmpty(c,r);
-						if(map.whatMap()[r][c] == ('h'))
-							g2.drawImage(healthPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('i'))
-							g2.drawImage(explosionPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('t'))
-							g2.drawImage(bombPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if(map.whatMap()[r][c] == ('p'))
-							g2.drawImage(speedPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
-						if (map.whatMap()[r][c] == ('g')) {
-							guy = new TheGuy(c * spriteSize + 10, r * spriteSize + 3, c, r);
-							map.whatMap()[r][c] = 'e';
-							Main.nlev = false;
-						}
-					}
-
-				g2.drawImage(man, guy.getX(), guy.getY(), 125, 125, this);
-			}
-			else
-				Main.gameStarted=false;
-		}
-		else
-			repaint();
-	}
-
+      
 	/*1 */
 	public void keyTyped(KeyEvent e)
 	{

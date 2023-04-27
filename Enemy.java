@@ -182,7 +182,6 @@ public class Enemy {
                     }
                 }
             }
-            //System.out.println(smartness+whichWay);
             int r=yBIGpos;
             int c=xBIGpos;
             if(whichWay==1 && KeyBox.map.whatMap()[r][c+1] == 'e') {

@@ -18,9 +18,8 @@ public class KeyBoxRunner extends JFrame
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
-	public static void main(String[] args)
-	{
-		KeyBoxRunner run = new KeyBoxRunner();
-	}
+    public static void main(String[] args)
+    {
+        KeyBoxRunner run = new KeyBoxRunner();
+    }
 }
