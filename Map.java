@@ -31,7 +31,7 @@ public class Map {
         maps.add(L8Map);
         maps.add(L9Map);
         maps.add(L10Map);
-        curMap=maps.get(0);
+        curMap=maps.get(Main.level);
     }
 
     public void placeMap()  throws FileNotFoundException{

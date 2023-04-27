@@ -6,7 +6,6 @@ public class Background extends JPanel
     {
         Graphics2D g2 = (Graphics2D) window;
         Image img1 = Toolkit.getDefaultToolkit().getImage("background.png"); /*the image cannot be in the SRC folder*/
-        g2.drawImage(img1, 0 , 0 , 1565 , 688 , this);
-
+        g2.drawImage(img1, 0, 0, 1565, 688, this);
     }
 }

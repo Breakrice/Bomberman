@@ -9,7 +9,7 @@ public class Bomb {
     public boolean extinguish=false;
     public boolean almExt=false;
     public static int bombs=1;
-    public static int radius=5;
+    public static int radius=1;
 
     public Bomb(int x,int y, int Bx,int By){
         xpos=x;

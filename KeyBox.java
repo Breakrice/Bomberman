@@ -82,16 +82,7 @@ public class KeyBox extends JPanel implements KeyListener {
                             powerup = (int) (Math.random() * 86); //98
                             if (powerup > 50)
                                 spawnpowerup = true;
-                            System.out.println(powerup);
-                            if (powerup == 0) {
-                                enemy = (int) (Math.random() * 33);
-                                if (enemy > 12 && enemy < 23)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 's';
-                                else if (enemy > 22 && enemy < 33)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'a';
-                                else
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'w';
-                            } else if (powerup > 50 && powerup < 63)
+                            if (powerup > 50 && powerup < 63)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 'i';
                             else if (powerup > 62 && powerup < 75)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos + i] = 't';
@@ -111,17 +102,7 @@ public class KeyBox extends JPanel implements KeyListener {
                             powerup = (int) (Math.random() * 86);
                             if (powerup > 50)
                                 spawnpowerup = true;
-                            System.out.println(powerup);
-
-                            if (powerup == 0) {
-                                enemy = (int) (Math.random() * 33);
-                                if (enemy > 12 && enemy < 23)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 's';
-                                else if (enemy > 22 && enemy < 33)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'a';
-                                else
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'w';
-                            } else if (powerup > 50 && powerup < 63)
+                            if (powerup > 50 && powerup < 63)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 'i';
                             else if (powerup > 62 && powerup < 75)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos][Main.bombs.get(z).xBIGpos - i] = 't';
@@ -141,16 +122,7 @@ public class KeyBox extends JPanel implements KeyListener {
                             powerup = (int) (Math.random() * 86);
                             if (powerup > 50)
                                 spawnpowerup = true;
-                            System.out.println(powerup);
-                            if (powerup == 0) {
-                                enemy = (int) (Math.random() * 33);
-                                if (enemy > 12 && enemy < 23)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 's';
-                                else if (enemy > 22 && enemy < 33)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'a';
-                                else
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'w';
-                            } else if (powerup > 50 && powerup < 63)
+                            if (powerup > 50 && powerup < 63)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 'i';
                             else if (powerup > 62 && powerup < 75)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos - i][Main.bombs.get(z).xBIGpos] = 't';
@@ -170,16 +142,7 @@ public class KeyBox extends JPanel implements KeyListener {
                             powerup = (int) (Math.random() * 86);
                             if (powerup > 50)
                                 spawnpowerup = true;
-                            System.out.println(powerup);
-                            if (powerup == 0) {
-                                enemy = (int) (Math.random() * 33);
-                                if (enemy > 12 && enemy < 23)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 's';
-                                else if (enemy > 22 && enemy < 33)
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'a';
-                                else
-                                    KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'w';
-                            } else if (powerup > 50 && powerup < 67)
+                            if (powerup > 50 && powerup < 67)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 'i';
                             else if (powerup > 66 && powerup < 82)
                                 KeyBox.map.whatMap()[Main.bombs.get(z).yBIGpos + i][Main.bombs.get(z).xBIGpos] = 't';
@@ -207,6 +170,8 @@ public class KeyBox extends JPanel implements KeyListener {
                     System.out.println();
                 }
             }
+
+            Main.startOver=false;
 
             if(guy.dead==false) {
                 for (int r = 0; r < map.whatMap().length; r++)
@@ -271,6 +236,10 @@ public class KeyBox extends JPanel implements KeyListener {
                             g2.drawImage(speedPowerup, c*spriteSize, r*spriteSize, spriteSize, spriteSize, this);
                         if (map.whatMap()[r][c] == ('g')) {
                             guy = new TheGuy(c * spriteSize + 10, r * spriteSize + 3, c, r);
+                            KeyBox.guy.startXBIGpos=c;
+                            KeyBox.guy.startYBIGpos=r;
+                            KeyBox.guy.startXpos=c*spriteSize+10;
+                            KeyBox.guy.startYpos=r*spriteSize+3;
                             map.whatMap()[r][c] = 'e';
                             Main.nlev = false;
                         }
@@ -297,7 +266,7 @@ public class KeyBox extends JPanel implements KeyListener {
     {
         /*KeyEvent key codes: https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html */
         if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
-            if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='t')
+            if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='t' ||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='w'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='s'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos+1]=='a')
                 Main.moveR=true;
             else
                 for(int yeah=0;yeah<Main.bombs.size();yeah++)
@@ -306,7 +275,7 @@ public class KeyBox extends JPanel implements KeyListener {
                 z.moveChoose();
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
-            if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='t')
+            if(map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='e'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='h'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='i'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='t' ||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='w'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='s'||map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos-1]=='a')
                 Main.moveL=true;
             else
                 for(int yeah=0;yeah<Main.bombs.size();yeah++)
@@ -315,7 +284,7 @@ public class KeyBox extends JPanel implements KeyListener {
                 z.moveChoose();
         }
         else if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
-            if(map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='t')
+            if(map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='t' || map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='w'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='s'||map.whatMap()[TheGuy.yBIGpos-1][TheGuy.xBIGpos]=='a')
                 Main.moveU=true;
             else
                 for(int yeah=0;yeah<Main.bombs.size();yeah++)
@@ -324,7 +293,7 @@ public class KeyBox extends JPanel implements KeyListener {
                 z.moveChoose();
         }
         else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
-            if(map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='t')
+            if(map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='e'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='h'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='i'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='t' ||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='w'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='s'||map.whatMap()[TheGuy.yBIGpos+1][TheGuy.xBIGpos]=='a')
                 Main.moveD=true;
             else
                 for(int yeah=0;yeah<Main.bombs.size();yeah++)

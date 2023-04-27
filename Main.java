@@ -8,6 +8,7 @@ public class Main {
     public static boolean moveL=false;
     public static boolean moveU=false;
     public static boolean moveD=false;
+    public static boolean startOver=false;
     public static boolean bombPlace=false;
     public static ArrayList<Bomb> bombs;
     public static ArrayList<Enemy> enemies;
@@ -38,7 +39,11 @@ public class Main {
             System.out.print("");
             if(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='f' || KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='w' || KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='s' || KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='a'){
                 TheGuy.lives--;
-                while(KeyBox.map.whatMap()[TheGuy.yBIGpos][TheGuy.xBIGpos]=='f')
+                startOver=true;
+                KeyBox.guy.yBIGpos=KeyBox.guy.startYBIGpos;
+                KeyBox.guy.xBIGpos=KeyBox.guy.startXBIGpos;
+                KeyBox.guy.ypos=KeyBox.guy.startYpos;
+                KeyBox.guy.xpos=KeyBox.guy.startXpos;
                 if(TheGuy.lives<1)
                     TheGuy.dead =true;
             }
